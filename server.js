@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv/config";
 import { JobSource } from "./models/JobSouce.js";
 
-const MONGODB_URI = 'mongodb://localhost/mez-job-manager'
+const MONGODB_URI = 'xmongodb://localhost/mez-job-manager'
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, (err) => {
+    if (err) console.log(err);
+})
 
 const app = express();
 const port = process.env.PORT || 9000;

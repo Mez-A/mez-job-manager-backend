@@ -12,6 +12,7 @@ mongoose.connect(MONGODB_URI, (err) => {
 const app = express();
 const port = process.env.PORT || 9000;
 
+app.use(cors())
 app.use(express.json());
 
 app.get("/", (req, res) => {

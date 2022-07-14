@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors"
@@ -31,7 +32,12 @@ app.post("/login", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     if(username === 'hans' && password === '000') {
-        res.json(user)
+        jwt.sign({ user }, 'secretkey', { expiresIn: '20s' }, (err, token) => {
+            res.json({
+                user,
+                token
+            });
+        });
     } else {
         res.sendStatus(403)
     }

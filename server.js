@@ -24,8 +24,40 @@ const port = process.env.PORT || 9000;
 
 app.use(express.json());
 
+const verifyToken = (req, res, next) => {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.sendStatus(403);
+    }
+};
+
+const decodeJwt = (token) => {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
+    let decodedData = JSON.parse(Buffer.from(base64, 'base64').toString('binary'));
+    return decodedData;
+}
+
 app.get("/", (req, res) => {
     res.send("<h1>Job Manager API</h1>");
+});
+
+app.post('/maintain-login', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            const data = decodeJwt(req.token);
+            res.json({
+                user: data.user
+            });
+        }
+    });
 });
 
 app.post("/login", (req, res) => {

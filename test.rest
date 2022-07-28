@@ -8,11 +8,11 @@ POST {{url}}/login
 content-type: application/json
  
 {
-    "username": "hans",
-    "password": "000"
+    "username": "edward",
+    "password": "edward123"
 }
 
 ### MAINTAIN LOGIN
 POST {{url}}/maintain-login
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImhhbnMiLCJmaXJzdE5hbWUiOiJIYW5zIiwibGFzdE5hbWUiOiJSaWNodGVyIn0sImlhdCI6MTY1NzgxNDgxMSwiZXhwIjoxNjU3ODE0ODMxfQ.DT3k4UOFAiOdOOu3VSkDjzkTyuq3HJoGUzB0TE7rNKs
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImhhbnMiLCJmaXJzdE5hbWUiOiJIYW5zIiwibGFzdE5hbWUiOiJSaWNodGVyIn0sImlhdCI6MTY1ODgzODc2MiwiZXhwIjoxNjU4ODM4NzgyfQ.-hUXIprgVJ4wjLU84o_VNQLm6LHMe5pDvIMtsIE58WM
